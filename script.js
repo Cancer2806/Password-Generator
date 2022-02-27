@@ -1,112 +1,85 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-let wordLength = 8;
-let wordToPass = "";
+
 const checkLowercase = document.getElementById("ckLowercase");
 const checkUppercase = document.getElementById("ckUppercase");
 const checkSpecial = document.getElementById("ckSpecial");
 const checkNumerals = document.getElementById("ckNumerals");
 
+// Global Variables
+let wordLength = 8;
+let wordToPass = "";
+let listCriteria = ""
 
+// Set of lists to apply for each password criteria selection
+const listLowerCase = "abcdefghijklmnopqrstuvwxyz";
+const listUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const listSpecial = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+const listNumeral = "0123456789";
 
-
-// Write password to the #password input
+// Execute when the Generate Password button is clicked
 function writePassword() {
+  // Obtain criteria and generate random password
   var password = generatePassword();
+  // Write password to the text area
   var passwordText = document.querySelector("#password");
-  
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// lists ofcharacters for each selection option
-const listLowerCase = "abcdefghijklmnopqrstuvwxyz";
-const listUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const listSpecial = "!\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-const listNumeral = "0123456789";
-let listSelect = ""
-
-// Click on Button to generate a password +/ series of prompts for password criteria
-
-// Prompt for length of password 8-128 characters cw data validation for length selected (use window.alert if incorrect entry so that person marker can see that know how to use)
-
-// Using window.prompt due to wording of assignment, but in practice would include this in the form
-// validate is used to force user to enter a number between 8 and 128
+// Validate selected password length
 function validate(numchar) {
   return (numchar >= 8 && numchar <= 128);
 }
 
-function promptLength(num) {
+// Prompt for length of password and validates
+// Prompt is used to meet Acceptance Criteria - in practice
+// a slider in the Password Criteria would be more appropriate
+function promptLength(error_message) {
   wordLength = window.prompt((error_message || "") + "Password Length (min 8 to max 128):", 8);
 
   if (!validate(wordLength)) {
-    generatePassword("Must enter a number between 8 and 128! \n");
+    promptLength("Must enter a number between 8 and 128! \n");
   };
 }
 
+// Generate random number to randomly pick character from the criteria list
 function randomNum() {
-  return Math.floor(Math.random() * listSelect.length);
+  return Math.floor(Math.random() * listCriteria.length);
 }
 
-function generatePassword(error_message) {
+// Check criteria and generate password
+function generatePassword() {
 
-  
-  console.log("Lowercase: ", checkLowercase.checked)
-  console.log("Uppercase: ", checkUppercase.checked)
-  console.log("Special: ", checkSpecial.checked)
-  console.log("Numbers: ", checkNumerals.checked)
-  
-  listSelect = "";
+  // Based on criteria selected, build list of acceptable characters
+  listCriteria = "";
   wordToPass = "";
   if (checkLowercase.checked) {
-    listSelect = listLowerCase;
+    listCriteria = listLowerCase;
   };
   if (checkUppercase.checked) {
-    listSelect = listSelect + listUpperCase;
+    listCriteria = listCriteria + listUpperCase;
   };
   if (checkSpecial.checked) {
-    listSelect = listSelect + listSpecial;
+    listCriteria = listCriteria + listSpecial;
   };
   if (checkNumerals.checked) {
-    listSelect = listSelect + listNumeral;
+    listCriteria = listCriteria + listNumeral;
   };
-  console.log(listSelect);
+ 
 
-  for (i = 0; i < wordLength; i++){
-    const letterPos = randomNum()
-    console.log(`i: ${i} letter position ${letterPos}`)
-    console.log(listSelect[letterPos]);
-    wordToPass = wordToPass + listSelect[letterPos];
-  }
-  console.log(wordToPass);
-
+  // Prevent progression until criteria selected
+  // If criteria acceptable, generate password of required length fitting selected criteria
   if (!checkLowercase.checked && !checkUppercase.checked && !checkSpecial.checked && !checkNumerals.checked) {
     window.alert("You must select the Password Criteria");
+    wordToPass = "";
   } else {
-    console.log(`Well done, you selected something`);
+    promptLength();
+    for (i = 0; i < wordLength; i++) {
+     wordToPass = wordToPass + listCriteria[randomNum()];
+    }
   }
   return wordToPass;
 }
-
-writePassword();
-
-// Then asked for the character types to include in the password
-
-
-// lowecase character selection (default)
-
-
-// uppercase selection
-
-
-// numeric selection
-
-
-// special characters selection
-
-// Generate the password that matches the criteria using random number generator
-
-// Display the password, either in an alert or written to the page (mockup requires written to the password box)

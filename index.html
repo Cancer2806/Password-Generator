@@ -12,9 +12,9 @@
       <header>
         <h1>Password Generator</h1>
       </header>
-      <div class="card">
+      <main class="card">
         <div class="card-header">
-          <h2>Generate a Password</h2>
+          <h2>Select Criteria and Generate Password</h2>
         </div>
         <div class="card-body">
           <textarea
@@ -25,22 +25,23 @@
           ></textarea>
         </div>
         <form>
-          <label for="criteria">Select your Password Criteria:</label>
+          <label for="criteria">Password Criteria Options:</label>
           <br>
-          <label for="ckLowercase">Lowercase</label>
-          <input id="ckLowercase" name="ckLowercase" type="checkbox" />
-          <label for="ckUppercase">Uppercase</label>
+          <input id="ckLowercase" name="ckLowercase"type="checkbox" />
+          <label for="ckLowercase">Lowercase</label><br>
           <input type="checkbox" id="ckUppercase" name="ckUppercase">
-          <label for="ckSpecial">Special Characters</label>
+          <label for="ckUppercase">Uppercase</label><br>
           <input type="checkbox" id="ckSpecial" name="ckSpecial">
-          <label for="ckNumerals">Numbers</label>
+          <label for="ckSpecial">Special Characters</label><br>
           <input type="checkbox" id="ckNumerals" name="ckNumerals">
-          </form>
+          <label for="ckNumerals">Numbers</label>
+        </form>
+           
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
         </div>
-      </div>
-    </div>
+      </main>
+    </div> <!-- wrapper -->
     <script src="script.js"></script>
   </body>
 </html>
