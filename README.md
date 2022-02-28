@@ -1,4 +1,4 @@
-# Password-Generator_Wk3-Homework
+# Password-Generator
 Web enabled Password Generator used within an organisation to generate secure passwords meeting the selected criteria
 
 
