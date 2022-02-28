@@ -41,7 +41,7 @@ function promptLength(error_message) {
   wordLength = window.prompt((error_message || "") + "Password Length (min 8 to max 128):", 8);
 
   if (!validate(wordLength)) {
-    promptLength("Must enter a number between 8 and 128! \n");
+    promptLength("You must enter a number between 8 and 128! \n");
   };
 }
 
