@@ -36,7 +36,7 @@ function validate(numchar) {
 
 // Prompt for length of password and validates
 // Prompt is used to meet Acceptance Criteria - in practice
-// a slider in the Password Criteria would be more appropriate
+// a slider in the Password Criteria may be more appropriate
 function promptLength(error_message) {
   wordLength = window.prompt((error_message || "") + "Password Length (min 8 to max 128):", 8);
 
@@ -52,7 +52,6 @@ function randomNum() {
 
 // Check criteria and generate password
 function generatePassword() {
-
   // Based on criteria selected, build list of acceptable characters
   listCriteria = "";
   wordToPass = "";
@@ -69,7 +68,6 @@ function generatePassword() {
     listCriteria = listCriteria + listNumeral;
   };
  
-
   // Prevent progression until criteria selected
   // If criteria acceptable, generate password of required length fitting selected criteria
   if (!checkLowercase.checked && !checkUppercase.checked && !checkSpecial.checked && !checkNumerals.checked) {
