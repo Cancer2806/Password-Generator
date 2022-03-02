@@ -1,9 +1,11 @@
-*,
+/* global selectors */
+*
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Element selectors */
 html,
 body,
 .wrapper {
@@ -17,17 +19,22 @@ body {
   background-color: #f9fbfd;
 }
 
-.wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
+}
+
+form {
+  margin: 0 0 0 36%;
+}
+
+/* Class selectors */
+.wrapper {
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .card {
@@ -40,6 +47,11 @@ header {
   margin: 0 auto;
   max-width: 800px;
   padding: 30px 40px;
+}
+
+.card-header {
+  text-align: center;
+  font-size: 16px;
 }
 
 .card-header::after {
@@ -93,10 +105,8 @@ button[disabled] {
   background: #c0c7cf;
 }
 
-.float-right {
-  float: right;
-}
-
+/* ID selectors */
+/* Presentation of generated password */
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -118,7 +128,13 @@ button[disabled] {
   overflow: hidden;
 }
 
+/* Web-page to be responsive across devices */
 @media (max-width: 690px) {
+  form {
+    margin:  0 0 0 30%;
+    font-size: 1 rem;
+  }
+  
   .btn {
     font-size: 1rem;
     margin: 16px 0px 0px 0px;
@@ -131,6 +147,11 @@ button[disabled] {
 }
 
 @media (max-width: 500px) {
+  form {
+    margin:  0 0 0 25%;
+    font-size: 0.8rem;
+  }
+  
   .btn {
     font-size: 0.8rem;
   }

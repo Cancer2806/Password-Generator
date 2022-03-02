@@ -34,12 +34,10 @@ function validate(numchar) {
   return (numchar >= 8 && numchar <= 128);
 }
 
-// Prompt for length of password and validates
-// Prompt is used to meet Acceptance Criteria - in practice
-// a slider in the Password Criteria may be more appropriate
+// Prompts for length of password and validates
 function promptLength(error_message) {
   wordLength = window.prompt((error_message || "") + "Password Length (min 8 to max 128):", 8);
-
+  
   if (!validate(wordLength)) {
     promptLength("You must enter a number between 8 and 128! \n");
   };
@@ -50,7 +48,7 @@ function randomNum() {
   return Math.floor(Math.random() * listCriteria.length);
 }
 
-// Check criteria and generate password
+// Build selection lists and generate password
 function generatePassword() {
   // Based on criteria selected, build list of acceptable characters
   listCriteria = "";
